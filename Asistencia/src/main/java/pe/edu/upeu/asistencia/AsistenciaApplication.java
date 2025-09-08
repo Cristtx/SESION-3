@@ -12,6 +12,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import pe.edu.upeu.asistencia.control.AsistenciaController;
 
 @SpringBootApplication
 public class AsistenciaApplication extends Application {
@@ -19,10 +20,9 @@ public class AsistenciaApplication extends Application {
 	private ConfigurableApplicationContext context;
 	private Parent parent;
 
-
 	public static void main(String[] args) {
 		//SpringApplication.run(AsistenciaApplication.class, args);
-		launch(args);
+			launch(args);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class AsistenciaApplication extends Application {
 		builder.application().setWebApplicationType(WebApplicationType.NONE);
 		context=builder.run(getParameters().getRaw().toArray(new String[0]));
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_asistencia.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/maingui.fxml"));
 		loader.setControllerFactory(context::getBean);
 		parent = loader.load();
 	}

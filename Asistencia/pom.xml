@@ -12,7 +12,7 @@
 	<artifactId>Asistencia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Asistencia</name>
-	<description>Mi primera chamba</description>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -86,7 +86,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-					<mainClass>pe.edu.upeu.asistencia.Aplication</mainClass>
+					<mainClass>pe.edu.upeu.asistencia.Aplicacion</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
