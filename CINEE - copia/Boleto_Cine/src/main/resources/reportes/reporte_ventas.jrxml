@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="reporte_ventas" pageWidth="595" pageHeight="842"
+              columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20">
+
+    <!-- ===================== PARÁMETROS ===================== -->
+    <parameter name="REPORT_DIR" class="java.lang.String"/>
+
+    <!-- ===================== QUERY (AQUÍ ESTABA EL ERROR) ===================== -->
+    <queryString>
+        <![CDATA[
+            SELECT
+                pe.titulo AS pelicula,
+                fu.fecha,
+                fu.hora,
+                ve.cantidad,
+                ve.total
+            FROM venta ve
+            INNER JOIN funcion fu ON ve.id_funcion = fu.id_funcion
+            INNER JOIN pelicula pe ON fu.id_pelicula = pe.id_pelicula
+            ORDER BY ve.id_venta DESC
+        ]]>
+    </queryString>
+
+    <!-- ===================== CAMPOS ===================== -->
+    <field name="pelicula" class="java.lang.String"/>
+    <field name="fecha" class="java.lang.String"/>
+    <field name="hora" class="java.lang.String"/>
+    <field name="cantidad" class="java.lang.Integer"/>
+    <field name="total" class="java.lang.Double"/>
+
+    <!-- ===================== ENCABEZADO ===================== -->
+    <pageHeader>
+        <band height="120">
+
+            <image>
+                <reportElement x="0" y="0" width="120" height="120"/>
+                <imageExpression><![CDATA[$P{REPORT_DIR} + "logo.png"]]></imageExpression>
+            </image>
+
+            <textField>
+                <reportElement x="140" y="35" width="400" height="40"/>
+                <textElement textAlignment="Center">
+                    <font size="22" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Reporte de Ventas del Cine"]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </pageHeader>
+
+    <!-- ===================== CABECERA DE TABLA ===================== -->
+    <columnHeader>
+        <band height="25">
+
+            <staticText>
+                <reportElement x="0" y="5" width="150" height="20"/>
+                <text><![CDATA[Pelicula]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="150" y="5" width="100" height="20"/>
+                <text><![CDATA[Fecha]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="250" y="5" width="100" height="20"/>
+                <text><![CDATA[Hora]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="350" y="5" width="100" height="20"/>
+                <text><![CDATA[Cantidad]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="450" y="5" width="100" height="20"/>
+                <text><![CDATA[Total]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+    <!-- ===================== DETALLE ===================== -->
+    <detail>
+        <band height="20">
+
+            <textField>
+                <reportElement x="0" y="0" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{pelicula}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="150" y="0" width="100" height="20"/>
+                <textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="250" y="0" width="100" height="20"/>
+                <textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="350" y="0" width="100" height="20"/>
+                <textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="450" y="0" width="100" height="20"/>
+                <textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+</jasperReport>

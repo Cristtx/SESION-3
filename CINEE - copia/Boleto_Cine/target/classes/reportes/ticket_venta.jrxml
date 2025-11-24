@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport
+        xmlns="http://jasperreports.sourceforge.net/jasperreports"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                        http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+        name="ticket_venta"
+        pageWidth="226"
+        pageHeight="600"
+        columnWidth="226"
+        leftMargin="0"
+        rightMargin="0"
+        topMargin="0"
+        bottomMargin="0">
+
+    <!-- ================== PARÁMETROS ================== -->
+    <parameter name="P_PELICULA" class="java.lang.String"/>
+    <parameter name="P_FECHA" class="java.lang.String"/>
+    <parameter name="P_HORA" class="java.lang.String"/>
+    <parameter name="P_ASIENTOS" class="java.lang.String"/>
+    <parameter name="P_CANTIDAD" class="java.lang.Integer"/>
+    <parameter name="P_TOTAL" class="java.lang.Double"/>
+    <parameter name="REPORT_DIR" class="java.lang.String"/>
+
+    <!-- ================== ENCABEZADO ================== -->
+    <title>
+        <band height="130">
+
+            <!-- LOGO CENTRADO -->
+            <image>
+                <reportElement x="63" y="5" width="100" height="60"/>
+                <imageExpression><![CDATA[$P{REPORT_DIR} + "logo.png"]]></imageExpression>
+            </image>
+
+            <!-- NOMBRE DEL CINE -->
+            <staticText>
+                <reportElement x="0" y="70" width="226" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[CINE GAAA]]></text>
+            </staticText>
+
+            <!-- RUC O DESCRIPCIÓN -->
+            <staticText>
+                <reportElement x="0" y="90" width="226" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[RUC: 12345678912]]></text>
+            </staticText>
+
+        </band>
+    </title>
+
+    <!-- ================== DETALLE ================== -->
+    <detail>
+        <band height="260">
+
+            <!-- PELÍCULA -->
+            <staticText>
+                <reportElement x="0" y="0" width="226" height="15"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[PELÍCULA:]]></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="0" y="15" width="226" height="15"/>
+                <textElement><font size="9"/></textElement>
+                <textFieldExpression><![CDATA[$P{P_PELICULA}]]></textFieldExpression>
+            </textField>
+
+            <!-- FECHA / HORA -->
+            <staticText>
+                <reportElement x="0" y="35" width="226" height="15"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[FECHA / HORA:]]></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="0" y="50" width="226" height="15"/>
+                <textElement><font size="9"/></textElement>
+                <textFieldExpression><![CDATA[$P{P_FECHA} + "   " + $P{P_HORA}]]></textFieldExpression>
+            </textField>
+
+            <!-- ASIENTOS -->
+            <staticText>
+                <reportElement x="0" y="70" width="226" height="15"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[ASIENTOS:]]></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="0" y="85" width="226" height="15"/>
+                <textElement><font size="9"/></textElement>
+                <textFieldExpression><![CDATA[$P{P_ASIENTOS}]]></textFieldExpression>
+            </textField>
+
+            <!-- CANTIDAD -->
+            <staticText>
+                <reportElement x="0" y="105" width="226" height="15"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[CANTIDAD:]]></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="0" y="120" width="226" height="15"/>
+                <textElement><font size="9"/></textElement>
+                <textFieldExpression><![CDATA[$P{P_CANTIDAD}]]></textFieldExpression>
+            </textField>
+
+            <!-- TOTAL -->
+            <staticText>
+                <reportElement x="0" y="140" width="226" height="15"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[TOTAL:]]></text>
+            </staticText>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="0" y="155" width="226" height="15"/>
+                <textElement><font size="9"/></textElement>
+                <textFieldExpression><![CDATA[$P{P_TOTAL}]]></textFieldExpression>
+            </textField>
+
+            <!-- ================== PIE DE PÁGINA ================== -->
+            <staticText>
+                <reportElement x="0" y="200" width="226" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[GRACIAS POR SU COMPRA]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="0" y="220" width="226" height="20"/>
+                <textElement textAlignment="Center">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Disfrute su película :)]]></text>
+            </staticText>
+
+        </band>
+    </detail>
+
+</jasperReport>

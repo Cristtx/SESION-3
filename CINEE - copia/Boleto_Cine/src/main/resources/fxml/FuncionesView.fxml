@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pe.edu.upeu.cine.control.FuncionesController">
+
+    <padding>
+        <Insets top="20" left="20" right="20" bottom="20"/>
+    </padding>
+
+    <Label text="Gestión de Funciones"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="15">
+
+        <!-- FORMULARIO -->
+        <VBox spacing="10">
+
+            <Label text="Película"/>
+            <ComboBox fx:id="cmbPeliculas" prefWidth="200"/>
+
+            <Label text="Fecha (YYYY-MM-DD)"/>
+            <TextField fx:id="txtFecha" prefWidth="200"/>
+
+            <Label text="Hora (HH:MM)"/>
+            <TextField fx:id="txtHora" prefWidth="200"/>
+
+            <Label text="Sala"/>
+            <TextField fx:id="txtSala" prefWidth="200"/>
+
+            <Label text="Precio"/>
+            <TextField fx:id="txtPrecio" prefWidth="200"/>
+
+            <HBox spacing="10">
+                <Button text="Guardar" onAction="#guardarFuncion" prefWidth="100"/>
+                <Button text="Actualizar" onAction="#actualizarFuncion" prefWidth="100"/>
+                <Button text="Eliminar" onAction="#eliminarFuncion" prefWidth="100"/>
+            </HBox>
+
+            <Button text="Limpiar" onAction="#limpiarFormulario" prefWidth="210"/>
+        </VBox>
+
+        <!-- TABLA -->
+        <TableView fx:id="tablaFunciones" prefWidth="600">
+            <columns>
+                <TableColumn text="ID" fx:id="colId" prefWidth="50"/>
+                <TableColumn text="Película" fx:id="colPelicula" prefWidth="150"/>
+                <TableColumn text="Fecha" fx:id="colFecha" prefWidth="100"/>
+                <TableColumn text="Hora" fx:id="colHora" prefWidth="100"/>
+                <TableColumn text="Sala" fx:id="colSala" prefWidth="100"/>
+                <TableColumn text="Precio" fx:id="colPrecio" prefWidth="100"/>
+            </columns>
+        </TableView>
+
+    </HBox>
+
+</VBox>

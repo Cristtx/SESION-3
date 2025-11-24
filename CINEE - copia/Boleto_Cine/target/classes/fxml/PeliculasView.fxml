@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pe.edu.upeu.cine.control.PeliculasController">
+
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+
+    <Label text="Gestión de Películas"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="15">
+
+        <!-- FORMULARIO -->
+        <VBox spacing="10">
+
+            <Label text="Título"/>
+            <TextField fx:id="txtTitulo" prefWidth="200"/>
+
+            <Label text="Duración (min)"/>
+            <TextField fx:id="txtDuracion" prefWidth="200"/>
+
+            <Label text="Clasificación"/>
+            <TextField fx:id="txtClasificacion" prefWidth="200"/>
+
+            <HBox spacing="10">
+                <Button text="Guardar" onAction="#guardarPelicula" prefWidth="100"/>
+                <Button text="Actualizar" onAction="#actualizarPelicula" prefWidth="100"/>
+                <Button text="Eliminar" onAction="#eliminarPelicula" prefWidth="100"/>
+            </HBox>
+
+            <Button text="Limpiar" onAction="#limpiarFormulario" prefWidth="210"/>
+        </VBox>
+
+        <!-- TABLA -->
+        <TableView fx:id="tablaPeliculas" prefWidth="500">
+            <columns>
+                <TableColumn text="ID" fx:id="colId" prefWidth="50"/>
+                <TableColumn text="Título" fx:id="colTitulo" prefWidth="150"/>
+                <TableColumn text="Duración" fx:id="colDuracion" prefWidth="100"/>
+                <TableColumn text="Clasificación" fx:id="colClasificacion" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+    </HBox>
+</VBox>

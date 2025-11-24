@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pe.edu.upeu.cine.control.LoginController"
+            prefWidth="400" prefHeight="250">
+
+    <children>
+        <VBox spacing="15" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20"
+              AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+            <Label text="CINE - LOGIN"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10">
+                <Label text="Usuario:" prefWidth="80"/>
+                <TextField fx:id="txtUsuario" promptText="Ingrese usuario"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Contraseña:" prefWidth="80"/>
+                <PasswordField fx:id="txtPassword" promptText="Ingrese contraseña"/>
+            </HBox>
+
+            <Button text="Ingresar" prefWidth="150" onAction="#login"/>
+        </VBox>
+    </children>
+</AnchorPane>

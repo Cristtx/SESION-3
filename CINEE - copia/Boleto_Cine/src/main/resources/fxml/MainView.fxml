@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pe.edu.upeu.cine.control.MainController"
+            prefWidth="600" prefHeight="400">
+
+    <top>
+        <Label text="Sistema de Venta de Boletos de Cine"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    </top>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+
+            <HBox spacing="10">
+                <children>
+                    <Label text="Función:"/>
+                    <ComboBox fx:id="cmbFuncion" prefWidth="250"/>
+                </children>
+            </HBox>
+
+            <HBox spacing="10">
+                <children>
+                    <Label text="Cliente:"/>
+                    <TextField fx:id="txtCliente" promptText="Nombre del cliente" prefWidth="200"/>
+                </children>
+            </HBox>
+
+            <HBox spacing="10">
+                <children>
+                    <Label text="Cantidad:"/>
+                    <Spinner fx:id="spnCantidad" prefWidth="80"/>
+                    <Label text="Precio:"/>
+                    <TextField fx:id="txtPrecio" editable="false"/>
+                    <Label text="Total:"/>
+                    <TextField fx:id="txtTotal" editable="false"/>
+                </children>
+            </HBox>
+
+            <Button text="Registrar Boleto"
+                    onAction="#registrarBoleto"
+                    style="-fx-font-size: 14px; -fx-padding: 6 12;"/>
+
+            <TableView fx:id="tablaBoletos" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="colCliente" text="Cliente" prefWidth="120"/>
+                    <TableColumn fx:id="colFuncion" text="Función" prefWidth="200"/>
+                    <TableColumn fx:id="colCantidad" text="Cant." prefWidth="60"/>
+                    <TableColumn fx:id="colTotal" text="Total" prefWidth="80"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

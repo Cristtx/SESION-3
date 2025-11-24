@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pe.edu.upeu.cine.control.PrincipalController"
+            prefWidth="900" prefHeight="600">
+
+    <!-- MENÚ IZQUIERDO -->
+    <left>
+        <VBox spacing="15" style="-fx-background-color: #2B2D42;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <children>
+                <Label text="CINE PELINCO"
+                       style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+                <Button text="Películas" onAction="#abrirPeliculas" prefWidth="150"/>
+                <Button text="Funciones" onAction="#abrirFunciones" prefWidth="150"/>
+                <Button text="Venta de Boletos" onAction="#abrirVentas" prefWidth="150"/>
+                <Button text="Reportes" onAction="#abrirReportes" prefWidth="150"/>
+
+                <Separator/>
+                <Button text="Cerrar sesión" onAction="#cerrarSesion" prefWidth="150"/>
+            </children>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO DINÁMICO -->
+    <center>
+        <StackPane fx:id="panelContenido">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Bienvenido al Sistema de Cine" style="-fx-font-size: 28px;"/>
+        </StackPane>
+    </center>
+
+</BorderPane>
+

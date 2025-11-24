@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pe.edu.upeu.cine.control.ReportesController"
+      spacing="15" style="-fx-padding: 20">
+
+    <Label text="Reporte de Ventas por Película"
+           style="-fx-font-size: 22; -fx-font-weight: bold"/>
+
+    <TableView fx:id="tablaReporte" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="colPelicula" text="Película" prefWidth="250"/>
+            <TableColumn fx:id="colEntradas" text="Entradas Vendidas" prefWidth="150"/>
+            <TableColumn fx:id="colRecaudado" text="Total Recaudado" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>

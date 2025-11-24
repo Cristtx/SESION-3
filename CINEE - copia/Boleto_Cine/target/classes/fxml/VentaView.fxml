@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pe.edu.upeu.cine.control.VentaController">
+
+    <padding>
+        <Insets top="20" left="20" right="20" bottom="20"/>
+    </padding>
+
+    <Label text="Venta de Boletos"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="20">
+
+        <!-- FORMULARIO -->
+        <VBox spacing="12">
+
+            <Label text="Función"/>
+            <ComboBox fx:id="cmbFuncion" prefWidth="220"/>
+
+            <Label text="Precio"/>
+            <TextField fx:id="txtPrecio" prefWidth="220" editable="false"/>
+
+            <Label text="Cantidad"/>
+            <Spinner fx:id="spnCantidad" prefWidth="220"/>
+
+            <Label text="Asientos Seleccionados"/>
+            <TextField fx:id="txtAsientos" prefWidth="220" editable="false"/>
+
+            <Button text="Seleccionar Asientos"
+                    onAction="#abrirAsientos"
+                    prefWidth="220"/>
+
+            <Label text="Total"/>
+            <TextField fx:id="txtTotal" prefWidth="220" editable="false"/>
+
+            <Button text="Vender" onAction="#venderBoleto" prefWidth="220"/>
+            <Button text="Imprimir Ticket" onAction="#imprimirTicket" prefWidth="220"/>
+            <Button text="Imprimir Ticket POS-80" onAction="#imprimirTicket"/>
+
+
+
+
+
+            <!-- ⭐ NUEVO BOTÓN PARA GENERAR REPORTE ⭐ -->
+            <Button text="Generar Reporte PDF"
+                    onAction="#generarReporte"
+                    prefWidth="220"/>
+
+        </VBox>
+
+        <!-- TABLA -->
+        <TableView fx:id="tablaVentas" prefWidth="650">
+            <columns>
+                <TableColumn fx:id="colId" text="ID Venta" prefWidth="80"/>
+                <TableColumn fx:id="colPelicula" text="Película" prefWidth="150"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120"/>
+                <TableColumn fx:id="colHora" text="Hora" prefWidth="100"/>
+                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
+                <TableColumn fx:id="colTotal" text="Total" prefWidth="100"/>
+            </columns>
+        </TableView>
+
+    </HBox>
+
+</VBox>
