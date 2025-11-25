@@ -1,0 +1,8 @@
+org\example\service\QRService.class
+module-info.class
+org\example\Main.class
+org\example\service\BoletoService.class
+org\example\dto\BoletoRequest.class
+org\example\controller\BoletoController.class
+org\example\repository\BoletoRepository.class
+org\example\entity\Boleto.class

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AdminController"
+      spacing="15" style="-fx-padding: 15;">
+
+    <!-- Encabezado -->
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="⚙️ Panel de Administración - Fly AUREAC" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1976d2;"/>
+        <Button text="🔄 Refrescar" onAction="#refrescarDatos" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button fx:id="btnCerrarSesion" text="🚪 Cerrar Sesión" onAction="#cerrarSesion"
+                style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <Separator/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE">
+        <!-- Pestaña de Gestión de Rutas y Precios -->
+        <Tab text="🗺️ Gestión de Rutas y Precios">
+            <VBox spacing="15" style="-fx-padding: 10;">
+                <Label text="Gestión de Rutas y Precios" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+                <!-- Actualizar Precio Existente -->
+                <VBox spacing="10" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 10;">
+                    <Label text="Actualizar Precio de Ruta Existente" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Origen:"/>
+                        <ComboBox fx:id="comboOrigenAdmin" prefWidth="150"/>
+                        <Label text="Destino:"/>
+                        <ComboBox fx:id="comboDestinoAdmin" prefWidth="150"/>
+                        <Label text="Nuevo Precio:"/>
+                        <TextField fx:id="txtNuevoPrecio" prefWidth="100" promptText="Ej: 450.00"/>
+                        <Button text="Actualizar Precio" onAction="#actualizarPrecio"
+                                style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Agregar Nueva Ruta -->
+                <VBox spacing="10" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 10;">
+                    <Label text="Agregar Nueva Ruta" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Origen:"/>
+                        <ComboBox fx:id="comboNuevoOrigen" prefWidth="150"/>
+                        <Label text="Destino:"/>
+                        <ComboBox fx:id="comboNuevoDestino" prefWidth="150"/>
+                        <Label text="Precio:"/>
+                        <TextField fx:id="txtPrecioNuevaRuta" prefWidth="100" promptText="Ej: 500.00"/>
+                        <Button text="Agregar Ruta" onAction="#agregarRuta"
+                                style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Tabla de Rutas -->
+                <Label text="Rutas Existentes" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="tablaRutas" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colOrigen" text="Origen" prefWidth="150"/>
+                        <TableColumn fx:id="colDestino" text="Destino" prefWidth="150"/>
+                        <TableColumn fx:id="colPrecio" text="Precio ($)" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10">
+                    <Button text="Eliminar Ruta Seleccionada" onAction="#eliminarRuta"
+                            style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Pestaña de Gestión de Usuarios -->
+        <Tab text="👥 Gestión de Usuarios">
+            <VBox spacing="15" style="-fx-padding: 10;">
+                <Label text="Usuarios Registrados" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="tablaUsuarios" prefHeight="300">
+                    <columns>
+                        <TableColumn fx:id="colIdUsuario" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                        <TableColumn fx:id="colRol" text="Rol" prefWidth="80"/>
+                        <TableColumn fx:id="colFechaRegistro" text="Fecha Registro" prefWidth="150"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10">
+                    <Button text="Eliminar Usuario Seleccionado" onAction="#eliminarUsuario"
+                            style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- NUEVA PESTAÑA: Reportes y Estadísticas -->
+        <Tab text="📈 Reportes y Estadísticas">
+            <VBox spacing="15" style="-fx-padding: 10;">
+                <Label text="Reportes de Viajes por Mes" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+                <!-- Selector de Año -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Año:" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="comboAnioReporte" prefWidth="100"/>
+                    <Button text="Generar Reporte" onAction="#generarReporteMensual"
+                            style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Gráfico de Barras - Viajes por Mes -->
+                <VBox spacing="10">
+                    <Label text="Viajes por Mes" style="-fx-font-weight: bold;"/>
+                    <BarChart fx:id="chartViajesPorMes" prefHeight="300">
+                        <xAxis>
+                            <CategoryAxis fx:id="xAxisMeses" label="Meses"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis fx:id="yAxisViajes" label="Cantidad de Viajes"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+
+                <!-- Gráficos en Fila -->
+                <HBox spacing="20">
+                    <!-- Gráfico de Torta - Destinos Populares -->
+                    <VBox spacing="10" prefWidth="400">
+                        <Label text="Destinos Más Populares" style="-fx-font-weight: bold;"/>
+                        <PieChart fx:id="chartDestinosPopulares" prefHeight="300"/>
+                    </VBox>
+
+                    <!-- Gráfico de Barras - Usuarios Top -->
+                    <VBox spacing="10" prefWidth="400">
+                        <Label text="Usuarios con Más Viajes" style="-fx-font-weight: bold;"/>
+                        <BarChart fx:id="chartUsuariosTop" prefHeight="300">
+                            <xAxis>
+                                <CategoryAxis label="Usuarios"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Cantidad de Viajes"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+                </HBox>
+
+                <!-- Estadísticas Resumen -->
+                <VBox spacing="10" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 15; -fx-background-color: #f8f9fa;">
+                    <Label text="Resumen Estadístico" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+                    <GridPane hgap="20" vgap="10">
+                        <Label text="Total de Viajes:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="lblTotalViajes" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-text-fill: #1976d2; -fx-font-weight: bold;"/>
+
+                        <Label text="Ingreso Total:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="lblIngresoTotal" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-text-fill: #4caf50; -fx-font-weight: bold;"/>
+
+                        <Label text="Mes con Más Viajes:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="lblMesMasViajes" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-text-fill: #ff9800; -fx-font-weight: bold;"/>
+
+                        <Label text="Destino Más Popular:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="lblDestinoPopular" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-text-fill: #9c27b0; -fx-font-weight: bold;"/>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <Label fx:id="lblAdminInfo" style="-fx-font-weight: bold; -fx-padding: 5;" wrapText="true"/>
+</VBox>

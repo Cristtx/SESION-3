@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.controller.ReporteController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="Reporte de países más concurridos (por mes)" />
+            <ComboBox fx:id="cbMes" prefWidth="150"/>
+            <Button text="Generar Reporte" onAction="#generarReporte"/>
+        </HBox>
+    </top>
+
+    <center>
+        <PieChart fx:id="graficoPais" />
+    </center>
+
+</BorderPane>

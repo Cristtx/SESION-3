@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom, #667eea, #764ba2);">
+            <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+            <!-- Tarjeta de Login/Registro -->
+            <VBox spacing="25" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 40; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 20, 0, 0, 0);" maxWidth="400">
+
+                <!-- Logo y Título -->
+                <VBox spacing="10" alignment="CENTER">
+                    <Label text="✈️" style="-fx-font-size: 40;"/>
+                    <Label text="Fly AUREAC" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1976d2;"/>
+                    <Label text="Sistema de Boletos de Avión" style="-fx-text-fill: #666; -fx-font-size: 14;"/>
+                </VBox>
+
+                <!-- FORMULARIO LOGIN -->
+                <VBox spacing="15" fx:id="formLogin">
+                    <Label text="Iniciar Sesión" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <VBox spacing="8">
+                        <Label text="Email:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <TextField fx:id="txtEmailLogin" promptText="tu@email.com" style="-fx-pref-height: 40; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Contraseña:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <PasswordField fx:id="txtPasswordLogin" promptText="Ingresa tu contraseña" style="-fx-pref-height: 40; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <Label fx:id="lblLoginError" style="-fx-font-weight: bold; -fx-padding: 5;" wrapText="true"/>
+
+                    <Button fx:id="btnLogin" text="Iniciar Sesión" onAction="#login"
+                            style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 45; -fx-background-radius: 8; -fx-font-size: 14;"/>
+
+                    <HBox spacing="5" alignment="CENTER">
+                        <Label text="¿No tienes cuenta?" style="-fx-text-fill: #666;"/>
+                        <Button fx:id="btnIrARegistro" text="Regístrate aquí" onAction="#irARegistro"
+                                style="-fx-background-color: transparent; -fx-text-fill: #1976d2; -fx-font-weight: bold; -fx-underline: true; -fx-padding: 0;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- FORMULARIO REGISTRO -->
+                <VBox spacing="15" fx:id="formRegistro" visible="false">
+                    <Label text="Crear Cuenta" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <VBox spacing="8">
+                        <Label text="Nombre Completo:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <TextField fx:id="txtNombreRegistro" promptText="Tu nombre completo" style="-fx-pref-height: 40; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Email:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <TextField fx:id="txtEmailRegistro" promptText="tu@email.com" style="-fx-pref-height: 40; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Contraseña:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <PasswordField fx:id="txtPasswordRegistro" promptText="Mínimo 6 caracteres" style="-fx-pref-height: 40; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <VBox spacing="8">
+                        <Label text="Confirmar Contraseña:" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+                        <PasswordField fx:id="txtConfirmarPassword" promptText="Repite tu contraseña" style="-fx-pref-height: 40; -fx-background-radius: 8;"/>
+                    </VBox>
+
+                    <Label fx:id="lblRegistroError" style="-fx-font-weight: bold; -fx-padding: 5;" wrapText="true"/>
+                    <Label fx:id="lblRegistroSuccess" style="-fx-font-weight: bold; -fx-padding: 5;" wrapText="true" visible="false"/>
+
+                    <Button fx:id="btnRegistrar" text="Registrarse" onAction="#registrar"
+                            style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 45; -fx-background-radius: 8; -fx-font-size: 14;"/>
+
+                    <HBox spacing="5" alignment="CENTER">
+                        <Label text="¿Ya tienes cuenta?" style="-fx-text-fill: #666;"/>
+                        <Button fx:id="btnIrALogin" text="Inicia sesión aquí" onAction="#irALogin"
+                                style="-fx-background-color: transparent; -fx-text-fill: #1976d2; -fx-font-weight: bold; -fx-underline: true; -fx-padding: 0;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+
+        </VBox>
+    </center>
+</BorderPane>

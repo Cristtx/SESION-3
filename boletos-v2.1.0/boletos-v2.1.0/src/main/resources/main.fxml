@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.BoletoController" spacing="15" style="-fx-padding: 15;">
+
+    <!-- Encabezado -->
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="✈️ Sistema de Boletos de Avión" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1976d2;"/>
+        <Button fx:id="btnCerrarSesion" text="🚪 Cerrar Sesión" onAction="#cerrarSesion"
+                style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;"/>
+        <Button text="🔄 Recargar" onAction="#recargarBoletos"
+                style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Formulario para crear/editar boletos -->
+    <VBox spacing="15" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 15;">
+        <Label text="Crear/Editar Boleto" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label text="Origen:" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="comboOrigen" prefWidth="150"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Destino:" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="comboDestino" prefWidth="150"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Asiento:" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="comboAsiento" prefWidth="100"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label text="Número de Vuelo:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtNumeroVuelo" prefWidth="120" editable="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Pasajero:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtPasajero" prefWidth="200" promptText="Nombre del pasajero"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Fecha de Vuelo:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtFechaVuelo" prefWidth="180" promptText="YYYY-MM-DDTHH:MM"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Precio ($):" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtPrecio" prefWidth="100" editable="false"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="10">
+            <Button fx:id="btnCrear" text="Crear Boleto" onAction="#crearBoleto"
+                    style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button fx:id="btnActualizar" text="Actualizar" onAction="#actualizarBoleto" visible="false"
+                    style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button fx:id="btnCancelar" text="Cancelar" onAction="#cancelarEdicion" visible="false"
+                    style="-fx-background-color: #9e9e9e; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="Generar QR" onAction="#generarQRCode"
+                    style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+
+    <!-- Filtros y lista de boletos -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Label text="Filtrar por destino:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="comboFiltrarDestino" prefWidth="150"/>
+        <Button text="Editar Seleccionado" onAction="#editarBoleto"
+                style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button text="Eliminar Seleccionado" onAction="#eliminarBoleto"
+                style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Lista de boletos -->
+    <VBox spacing="10">
+        <Label text="Boletos Registrados" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+        <ListView fx:id="listBoletos" prefHeight="200"/>
+    </VBox>
+
+    <!-- QR Code -->
+    <VBox spacing="10" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-padding: 15;">
+        <Label text="Código QR del Boleto" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+        <ImageView fx:id="imgQRCode" fitWidth="200" fitHeight="200" preserveRatio="true"/>
+    </VBox>
+
+    <!-- Mensajes de información -->
+    <Label fx:id="lblInfo" style="-fx-font-weight: bold; -fx-padding: 5;" wrapText="true"/>
+
+</VBox>
