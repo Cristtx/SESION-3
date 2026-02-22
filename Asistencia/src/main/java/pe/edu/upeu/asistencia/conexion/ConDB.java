@@ -8,30 +8,30 @@ public class ConDB {
     public static Connection conexion=null;
 
     public static Connection getConexion(){
-        try{
+        try {
             Class.forName("org.sqlite.JDBC");
-            String url="jdbc:sqlite:data/asistenciadb.db?foreign_keys=on";
+            String url="jdbc:sqlite:data/asistenciadb.db?foreign_keys=on;";
             if(conexion==null){
                 conexion= DriverManager.getConnection(url);
             }
-            System.out.println("Conexion establecida");
-        }catch(ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(null,"Error"+e.getMessage());
+            System.out.println("Coneccion exitosa");
+        }catch( ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(null,"Error:"+e.getMessage());
         }
-
         return conexion;
     }
 
     public static void closeConexion(){
         if(conexion!=null){
-            try{
+            try {
                 conexion.close();
-            }catch(SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
-    public static void main(String[] args) {
+
+    /*public static void main(String[] args) {
         PreparedStatement pst=null;
         ResultSet rs=null;
         Connection con=getConexion();
@@ -47,6 +47,6 @@ public class ConDB {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 }
